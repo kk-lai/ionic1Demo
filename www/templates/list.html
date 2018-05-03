@@ -1,0 +1,38 @@
+<ion-header-bar class="bar-positive" align-title="center">
+	<h1 class="title">Infinite scroll</h1>
+</ion-header-bar>
+<ion-content padding="false" overflow-scroll="true">
+		<ion-list>
+		  <ion-item ng-repeat="item in items track by item.id">
+		    {{ item.name }}
+		  </ion-item>
+		</ion-list>
+		<ion-infinite-scroll
+				immediate-check="false"
+			    on-infinite="load()"
+			    ng-if="!isAllLoaded"
+			    distance="1%">
+			<ion-spinner icon="spiral"></ion-spinner>
+		</ion-infinite-scroll>
+</ion-content>
+<ion-footer-bar class="bar-stable" align-title="center">
+	  <div class="buttons">
+			<button class="button button-positive button-icon button-clear ion-refresh" ng-click="reload()">
+	        </button>
+			<button class="button button-positive button-icon button-clear ion-plus-round" ng-click="add()">
+	        </button>	        
+			<button class="button button-positive button-icon button-clear ion-trash-a" ng-click="remove()">
+	        </button>	    	        
+			<button class="button button-positive button-icon button-clear ion-ios-compose-outline" ng-click="update()">
+	        </button>	    	     	        
+	  </div>  
+	<h1 class="title">Items in list: {{ items.length }}{{ status }}</h1>
+	  <div class="buttons">
+			<button class="button button-positive button-icon button-clear ion-ios-sunny" ng-click="reload('sunny')">
+	        </button>
+			<button class="button button-positive button-icon button-clear ion-ios-cloudy" ng-click="reload('cloudy')">
+	        </button>
+			<button class="button button-positive button-icon button-clear ion-ios-rainy" ng-click="reload('rainy')">
+	        </button>
+	  </div>  	
+</ion-footer-bar>
